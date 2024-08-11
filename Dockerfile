@@ -1,27 +1,33 @@
-FROM golang:1.22.5 AS base
-# using golang image as base images
+FROM golang:1.21 as base
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY go.mod .
-#copying go.mod file to install dependencies
+# Copy the go.mod and go.sum files to the working directory
+COPY go.mod ./
 
+# Download all the dependencies
 RUN go mod download
-#installing all the depnedencies
 
+# Copy the source code to the working directory
 COPY . .
-#copying all the source code
 
+# Build the application
 RUN go build -o main .
 
-#using distroless image for the final stage
-FROM golang:1.22.6-alpine3.20 AS final
+#######################################################
+# Reduce the image size using multi-stage builds
+# We will use a distroless image to run the application
+FROM gcr.io/distroless/base
 
+# Copy the binary from the previous stage
 COPY --from=base /app/main .
 
+# Copy the static files from the previous stage
 COPY --from=base /app/static ./static
 
+# Expose the port on which the application will run
 EXPOSE 8080
-#exposing the port 
 
-cmd ["./main"]
+# Command to run the application
+CMD ["./main"]
