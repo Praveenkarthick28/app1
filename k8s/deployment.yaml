@@ -7,7 +7,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchlabels:
+    matchLabels:
       name: portfolio
   template:
     metadata:
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: portfolio
-        imgae: karthickdocker28/goapp:v1
+        image: karthickdocker28/goapp:v1
         ports:
         - containerPort: 8080
