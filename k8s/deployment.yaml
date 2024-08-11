@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: portfolio
-        image: karthickdocker28/go-web-app:10330758609
+        image: karthickdocker28/goapp:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
