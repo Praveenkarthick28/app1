@@ -19,3 +19,11 @@ spec:
         image: karthickdocker28/go-web-app:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: "500m" # Request half a CPU core
+            memory: "256Mi" # Request 256MB of memory
+          limits:
+            cpu: "1" # Limit to one CPU core
+            memory: "512Mi" # Limit to 512MB of memory
+
