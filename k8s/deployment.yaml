@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
       - name: portfolio
-        image: karthickdocker28/goapp:{{ .Values.image.tag }}
+        image: karthickdocker28/go-web-app:10330758609
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: "500m" # Request half a CPU core
+            memory: "256Mi" # Request 256MB of memory
+          limits:
+            cpu: "1" # Limit to one CPU core
+            memory: "512Mi" # Limit to 512MB of memory
