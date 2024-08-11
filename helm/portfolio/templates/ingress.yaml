@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: a0f484a7982f84716a9062bd7da817bb-08b387d0ba9487d9.elb.us-east-1.amazonaws.com
+  - host: portfolio.local
     http:
       paths:
        - path: /
