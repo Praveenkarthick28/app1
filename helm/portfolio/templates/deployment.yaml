@@ -1,14 +1,13 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: portfolio
   labels:
-    name:portfolio
+    name: portfolio
 spec:
   replicas: 1
   selector:
-    matchlabels:
+    matchLabels:
       name: portfolio
   template:
     metadata:
@@ -16,7 +15,7 @@ spec:
         name: portfolio
     spec:
       containers:
-        - name: portfolio
-          imgae: karthickdocker28/goapp:{{ .Values.image.tag }}
-          ports:
-            - containerPort: 8080
+      - name: portfolio
+        image: karthickdocker28/goapp:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 8080
